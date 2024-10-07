@@ -1,7 +1,7 @@
 # options
 CC = gcc
-CFLAGS = -Wall -g -fpic
-LDFLAGS = -shared
+CFLAGS = -Wall -g -fpic -Og
+LDFLAGS = -shared -Og
 
 OBJS = visualize-c-memory.o
 LIB = visualize-c-memory.so

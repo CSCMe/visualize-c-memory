@@ -1,5 +1,10 @@
 #include <stdlib.h>
-
+#ifndef WIN32
+	#ifndef __USE_GNU
+		#define __USE_GNU
+	#endif
+	#include <dlfcn.h>
+#endif
 // This file should be either linked with a C program directly, or
 // compiled into a shared library and loaded via LD_PRELOAD.
 //
@@ -59,6 +64,16 @@ static void remove_pointer(void* pointer) {
 
 
 // wrappers ////////////////
+#ifndef WIN32 
+//To make sure this works with windows somewhat. though it might already be broken anyways
+int posix_memalign(void **__memptr, size_t __alignment, size_t __size) {
+	//The use of RTLD_NEXT might cause issues in the future. google for reference
+	int (*orig_posix_memalign)(void**, size_t, size_t) = dlsym(RTLD_NEXT, "posix_memalign");
+	int status = orig_posix_memalign(__memptr, __alignment, __size);
+	insert_pointer(*__memptr, __size, 'a');
+	return status;
+}
+#endif
 
 void* malloc(size_t size) {
 	void* pointer = __libc_malloc(size);

@@ -15,9 +15,9 @@ typedef struct {
 
 
 void local_vars_example() {
-	int my_int = 1;
-	float my_float = 2.0;
-	int my_array[3] = {3, 4, 5};
+	int my_int = 32; //0o
+	float my_float = 2.2;
+	int my_array[3] = {3, 4, 5}; //:b:
 	MyStruct my_struct = {.field1 = 1, .field2 = 2.0};
 
 	if(1) {

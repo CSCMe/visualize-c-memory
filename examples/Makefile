@@ -1,10 +1,10 @@
 # options
 CC = gcc
-CFLAGS = -Wall -g 
-
+CFLAGS = -Wall -g -Og -O0
+LDFLAGS = -Og
 LIB = ../src
 OBJS = examples.o
-EXEC = examples
+EXEC = result
 
 $(EXEC): $(OBJS) $(LIB)/visualize-c-memory.so
 	$(CC) $(OBJS) -o $(EXEC) $(LDFLAGS)

@@ -5,7 +5,7 @@
 			"name": "Make: compile and debug",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/examples/examples",
+			"program": "${workspaceFolder}/examples/result",
 			"stopAtEntry": true,
 			"cwd": "${workspaceFolder}/examples",
 			"environment": [
